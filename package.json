@@ -1,0 +1,23 @@
+{
+  "name": "phonegap-grunt",
+  "version": "0.0.1",
+  "description": "Grunt tasks for phonegap.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Slowhand0309/phonegap-grunt.git"
+  },
+  "author": "Slowhand0309",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Slowhand0309/phonegap-grunt/issues"
+  },
+  "homepage": "https://github.com/Slowhand0309/phonegap-grunt",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ect": "^0.1.2",
+    "grunt-exec": "^0.4.6"
+  }
+}
