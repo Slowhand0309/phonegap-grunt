@@ -14,10 +14,6 @@ module.exports = function(grunt) {
 
     // Exec commands.
     exec: {
-      // Initialize.
-      init: {
-        command: 'mkdir -p template/css && mkdir -p template/js'
-      },
       // Exec for android.
       build_android: {
         command: 'phonegap cordova build android'

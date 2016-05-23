@@ -11,14 +11,6 @@ $ grunt
 
 Watch `template/ect/*.ect`. If modified file, Render html file.
 
-> init
-
-```sh
-$ grunt init
-```
-
-Create directory for template.
-
 > clean android
 
 ```sh
