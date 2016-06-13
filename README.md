@@ -11,6 +11,15 @@ $ grunt
 
 Watch `template/ect/*.ect`. If modified file, Render html file.
 
+> init
+
+```sh
+$ grunt init
+```
+
+Create phonegap project.<br>
+※ Replace {{path}},{{id}},{{name}} in Gruntfile.js.
+
 > clean android
 
 ```sh
@@ -58,3 +67,11 @@ $ grunt build
 ```
 
 Build android ios platform.
+
+> spec
+
+```sh
+$ grunt spec
+```
+
+Run spec by jasmine.

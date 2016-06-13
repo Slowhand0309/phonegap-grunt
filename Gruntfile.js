@@ -15,6 +15,17 @@ module.exports = function(grunt) {
 
     // Exec commands.
     exec: {
+      // Initialize project.
+      init: {
+        cmd: function(path, id, name) {
+          var args = [
+            path,
+            id,
+            name
+          ].join(' ');
+          return 'phonegap create ' + args;
+        }
+      },
       // Exec for android.
       build_android: {
         command: 'phonegap cordova build android'
@@ -85,7 +96,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['watch']);
 
   // Task init : create directory's.
-  grunt.registerTask('init', ['exec:init']);
+  grunt.registerTask('init', ['exec:init:{{path}}:{{id}}:{{name}}']);
 
   // Task clean_android : remake android platform.
   grunt.registerTask('clean_android', ['copy', 'exec:clean_platform_android']);
