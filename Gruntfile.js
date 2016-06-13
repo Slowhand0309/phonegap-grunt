@@ -8,6 +8,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   // Project configuration.
   grunt.initConfig({
@@ -63,6 +64,20 @@ module.exports = function(grunt) {
         cwd: 'template',
         dest: 'www'
       }
+    },
+
+    // Task for jasmine.
+    jasmine: {
+        main: {
+          src: 'www/js/**/*.js',
+          options: {
+            specs: 'spec/*_spec.js',
+            helpers: 'spec/*_helper.js',
+            junit: {
+              path: 'report'
+            }
+          }
+        }
     }
   });
 
@@ -95,5 +110,8 @@ module.exports = function(grunt) {
 
   // Task run_ios : Run for ios platform.
   grunt.registerTask('run_ios', ['build_ios', 'exec:run_ios']);
+
+  // Task spec : Run all spec.
+  grunt.registerTask('spec', ['jasmine:main']);
 
 };
