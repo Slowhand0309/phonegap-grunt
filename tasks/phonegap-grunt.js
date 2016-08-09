@@ -17,19 +17,7 @@ module.exports = function(grunt) {
 
   // Project configuration for debug.
   grunt.config.merge({
-    phonegap_grunt: {
-      init: {
-        path: '/user/sample',
-        id: 'hoge.hoge',
-        name: 'name_sample'
-      },
-      build: {
-        platform: ['android', 'ios']
-      },
-      run: {
-        platform: 'android'
-      }
-    }
+
   });
 
 
@@ -68,6 +56,18 @@ module.exports = function(grunt) {
       } else {
         env.platform.forEach(function(p) {
           commands.push('phonegap cordova run ' + p);
+        })
+      }
+        break;
+
+      case 'clean':
+      if (typeof env.platform === 'string') {
+        commands = ['phonegap cordova platform rm ' + env.platform +
+        ' && phonegap cordova platform add ' + env.platform];
+      } else {
+        env.platform.forEach(function(p) {
+          commands.push('phonegap cordova platform rm ' + p +
+          ' && phonegap cordova platform add ' + p);
         })
       }
         break;

@@ -8,9 +8,20 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   grunt.initConfig({
-    exec: {
-      pwd: {
-        command: 'pwd'
+    phonegap_grunt: {
+      init: {
+        path: '/user/sample',
+        id: 'hoge.hoge',
+        name: 'name_sample'
+      },
+      build: {
+        platform: ['android', 'ios']
+      },
+      run: {
+        platform: 'android'
+      },
+      clean: {
+        platform: ['android', 'ios']
       }
     }
   });
