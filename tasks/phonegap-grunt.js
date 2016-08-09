@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 
     var config = {};
     commands.forEach(function(c, index) {
-      config['cmd' + index] = {command: 'echo ' + c};
+      config['cmd' + index] = {command: c};
     });
     grunt.config.set('exec', config);
     commands.forEach(function(c, index) {

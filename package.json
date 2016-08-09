@@ -9,14 +9,14 @@
     "type": "git",
     "url": "https://github.com/Slowhand0309/phonegap-grunt.git"
   },
+  "main": "Gruntfile.js",
   "author": "Slowhand0309",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Slowhand0309/phonegap-grunt/issues"
   },
   "homepage": "https://github.com/Slowhand0309/phonegap-grunt",
-  "devDependencies": {
-    "exec": "^0.2.1",
+  "dependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
