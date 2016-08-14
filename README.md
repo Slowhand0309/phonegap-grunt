@@ -1,77 +1,76 @@
 # phonegap-grunt
 Grunt tasks for phonegap.
 
-## Tasks
+## Configuration
 
-> default
+Sample `Gruntfile.js`
 
-```sh
-$ grunt
+```js
+module.exports = function(grunt) {
+
+  // Load npm tasks.
+  grunt.loadNpmTasks('phonegap-grunt');
+
+  // Configuration.
+  grunt.initConfig({
+
+    // phonegap-grunt config.
+    pg: {
+      // Project create.
+      init: {
+        path: '.',
+        id: 'sample.com',
+        name: 'sample'
+      },
+      // Platform add android and ios.
+      add: {
+        platform: ['android', 'ios']
+      },
+      // Build android and ios platforms.
+      build: {
+        platform: ['android', 'ios']
+      },
+      // Run android platform.
+      run: {
+        platform: 'android'
+      },
+      // Platform rm & platform add.
+      clean: {
+        platform: ['android', 'ios']
+      }
+    }
+  });
+};
 ```
 
-Watch `template/ect/*.ect`. If modified file, Render html file.
+## Tasks
 
 > init
 
 ```sh
-$ grunt init
+$ grunt pg:init
 ```
 
-Create phonegap project.<br>
-※ Replace {{path}},{{id}},{{name}} in Gruntfile.js.
-
-> clean android
+> add
 
 ```sh
-$ grunt clean_android
+$ grunt pg:add
 ```
-
-Remove android platform and remake.
-
-> clean ios
-
-```sh
-$ grunt clean_ios
-```
-
-Remove ios platform and remake.
-
-> clean
-
-```sh
-$ grunt clean
-```
-
-Remove android ios platform and remake.
-
-> build android
-
-```sh
-$ grunt build_android
-```
-
-Build android platform.
-
-> build ios
-
-```sh
-$ grunt build_ios
-```
-
-Build ios platform.
 
 > build
 
 ```sh
-$ grunt build
+$ grunt pg:build
 ```
 
-Build android ios platform.
-
-> spec
+> run
 
 ```sh
-$ grunt spec
+$ grunt pg:run
 ```
 
-Run spec by jasmine.
+> clean
+
+```sh
+$ grunt pg:clean
+```
