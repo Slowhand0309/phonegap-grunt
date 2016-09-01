@@ -1,6 +1,12 @@
 # phonegap-grunt
 Grunt tasks for phonegap.
 
+## Require
+
+```sh
+$ npm install -g phonegap@latest
+```
+
 ## Install
 
 Recommend update the npm.
