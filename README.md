@@ -1,6 +1,21 @@
 # phonegap-grunt
 Grunt tasks for phonegap.
 
+## Install
+
+Recommend update the npm.
+```sh
+$ npm update -g npm
+```
+Add the following to the `package.json`.
+
+```js
+"devDependencies": {
+  "phonegap-grunt": "git://github.com/Slowhand0309/phonegap-grunt.git"
+}
+```
+
+
 ## Configuration
 
 Sample `Gruntfile.js`
