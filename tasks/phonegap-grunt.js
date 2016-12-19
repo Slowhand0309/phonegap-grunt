@@ -11,6 +11,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-exec');
   grunt.loadNpmTasks('grunt-ect');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
@@ -20,13 +21,36 @@ module.exports = function(grunt) {
 
   });
 
+  /**
+   * Tasks for after exec command.
+   *
+   * @param {Object} afterTasks
+   */
+  function onAfter(afterTasks) {
+    // Copy.
+    var copyConfig = afterTasks.copy;
+    if (copyConfig) {
+      grunt.config.merge({ copy: copyConfig });
+      grunt.task.run(['copy']);
+    }
 
+    // Exec.
+    var execConfig = afterTasks.exec;
+    if (execConfig) {
+      grunt.config.merge({ exec: execConfig });
+      grunt.task.run(['exec:main']);
+    }
+  }
+
+  /**
+   * Regist multi task.
+   */
   grunt.registerMultiTask('pg', 'Execute phonegap action.', function() {
 
     // Env for execute.
     var env = {
       command: this.target || 'build',
-      platform: this.data['platform'] || 'android'
+      platform: this.data.platform || 'android'
     };
 
     var commands = [];
@@ -35,13 +59,13 @@ module.exports = function(grunt) {
     switch (env.command) {
       case 'init':
         // Create project in tmp dir.
-        var path = this.data['path'] || '.';
+        var path = this.data.path || '.';
         path = path + '/__tmp__';
 
         var args = [
           path,
-          this.data['id'] || 'project.id',
-          this.data['name'] || 'project_name'
+          this.data.id || 'project.id',
+          this.data.name || 'project_name'
         ].join(' ');
         commands = ['phonegap create ' + args];
 
@@ -50,19 +74,19 @@ module.exports = function(grunt) {
           main: {
             expand: true,
             src: ['**/*', '!package.json'],
-            cwd: '__tmp__',
-            dest: '.'
+            cwd: path,
+            dest: this.data.path || '.'
           }
         };
-        afterTasks['copy'] = copyConfig;
+        afterTasks.copy = copyConfig;
 
         // After task: remove.
         var execConfig = {
           main: {
-            command: 'rm -rf __tmp__'
+            command: 'rm -rf ' + path
           }
         };
-        afterTasks['exec'] = execConfig;
+        afterTasks.exec = execConfig;
         break;
 
       case 'build':
@@ -71,7 +95,7 @@ module.exports = function(grunt) {
         } else {
           env.platform.forEach(function(p) {
             commands.push('phonegap cordova build ' + p);
-          })
+          });
         }
         break;
 
@@ -81,7 +105,7 @@ module.exports = function(grunt) {
       } else {
         env.platform.forEach(function(p) {
           commands.push('phonegap cordova run ' + p);
-        })
+        });
       }
         break;
 
@@ -91,7 +115,7 @@ module.exports = function(grunt) {
       } else {
         env.platform.forEach(function(p) {
           commands.push('phonegap cordova platform add ' + p);
-        })
+        });
       }
         break;
 
@@ -103,7 +127,7 @@ module.exports = function(grunt) {
         env.platform.forEach(function(p) {
           commands.push('phonegap cordova platform rm ' + p +
           ' && phonegap cordova platform add ' + p);
-        })
+        });
       }
         break;
     }
@@ -119,25 +143,4 @@ module.exports = function(grunt) {
 
     onAfter(afterTasks);
   });
-
-  /**
-   * Tasks for after exec command.
-   *
-   * @param {Object} afterTasks
-   */
-  function onAfter(afterTasks) {
-    // Copy.
-    var copyConfig = afterTasks['copy'];
-    if (copyConfig) {
-      grunt.config.merge({ copy: copyConfig });
-      grunt.task.run(['copy']);
-    }
-
-    // Exec.
-    var execConfig = afterTasks['exec'];
-    if (execConfig) {
-      grunt.config.merge({ exec: execConfig });
-      grunt.task.run(['exec:main']);
-    }
-  };
-}
+};
