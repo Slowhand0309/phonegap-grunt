@@ -55,11 +55,12 @@ module.exports = function(grunt) {
 
     var commands = [];
     var afterTasks = {};
+    var basePath = this.data.path;
 
     switch (env.command) {
       case 'init':
         // Create project in tmp dir.
-        var path = this.data.path || '.';
+        var path = basePath || '.';
         path = path + '/__tmp__';
 
         var args = [
@@ -75,7 +76,7 @@ module.exports = function(grunt) {
             expand: true,
             src: ['**/*', '!package.json'],
             cwd: path,
-            dest: this.data.path || '.'
+            dest: basePath || '.'
           }
         };
         afterTasks.copy = copyConfig;
@@ -87,6 +88,7 @@ module.exports = function(grunt) {
           }
         };
         afterTasks.exec = execConfig;
+        basePath = null; // Not change directory.
         break;
 
       case 'build':
@@ -132,11 +134,16 @@ module.exports = function(grunt) {
         break;
     }
 
+
     var config = {};
     commands.forEach(function(c, index) {
+      if (basePath) {
+        c = 'cd ' + basePath + ' && ' + c;
+      }
       config['cmd' + index] = {command: c};
     });
     grunt.config.set('exec', config);
+
     commands.forEach(function(c, index) {
       grunt.task.run(['exec:cmd' + index]);
     });
