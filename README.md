@@ -1,19 +1,22 @@
 # phonegap-grunt
-Grunt tasks for phonegap.
+Grunt tasks for phonegap:iphone:.
 
-## Require
+[![Build Status](https://travis-ci.org/Slowhand0309/phonegap-grunt.svg?branch=master)](https://travis-ci.org/Slowhand0309/phonegap-grunt)
+
+## Require :warning:
 
 ```sh
 $ npm install -g phonegap@latest
 $ npm install -g grunt-cli
 ```
 
-## Install
-
-Recommend update the npm.
+※ Recommend update the npm.
 ```sh
 $ npm update -g npm
 ```
+
+## Install
+
 Add the following to the `package.json`.
 
 ```js
@@ -40,24 +43,28 @@ module.exports = function(grunt) {
     pg: {
       // Project create.
       init: {
-        path: '.',
+        path: 'project_path',
         id: 'sample.com',
         name: 'sample'
       },
       // Platform add android and ios.
       add: {
+        path: 'project_path',
         platform: ['android', 'ios']
       },
       // Build android and ios platforms.
       build: {
+        path: 'project_path',
         platform: ['android', 'ios']
       },
       // Run android platform.
       run: {
+        path: 'project_path',
         platform: 'android'
       },
       // Platform rm & platform add.
       clean: {
+        path: 'project_path',
         platform: ['android', 'ios']
       }
     }
@@ -67,32 +74,18 @@ module.exports = function(grunt) {
 
 ## Tasks
 
-> init
+|Name|Command|Option|Summary|
+|:---|:------|:-----|:------|
+|init|`grunt pg:init`|`path`: project path<br>`id`: project id<br>`name`: project name|Create phonegap project in the specified directory|
+|add|`grunt pg:add`|`path`: project path<br>`platform`: specified platform|Add platform to project|
+|build|`grunt pg:build`|`path`: project path<br>`platform`: specified platform|Build for specified platform|
+|run|`grunt pg:run`|`path`: project path<br>`platform`: specified platform|Run for specified platform|
+|clean|`grunt pg:clean`|`path`: project path<br>`platform`: specified platform|Remove specified platform and platforms again|
 
-```sh
-$ grunt pg:init
-```
+## Licence
 
-> add
+[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
-```sh
-$ grunt pg:add
-```
+## Author
 
-> build
-
-```sh
-$ grunt pg:build
-```
-
-> run
-
-```sh
-$ grunt pg:run
-```
-
-> clean
-
-```sh
-$ grunt pg:clean
-```
+[slowhand0309](https://github.com/Slowhand0309)
