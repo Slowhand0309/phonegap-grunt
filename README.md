@@ -5,6 +5,7 @@ Grunt tasks for phonegap.
 
 ```sh
 $ npm install -g phonegap@latest
+$ npm install -g grunt-cli
 ```
 
 ## Install
