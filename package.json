@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/Slowhand0309/phonegap-grunt/issues"
   },
+  "scripts": {
+    "test": "grunt"
+  },
   "homepage": "https://github.com/Slowhand0309/phonegap-grunt",
   "dependencies": {
     "grunt-contrib-clean": "^1.0.0",
