@@ -23,7 +23,11 @@ module.exports = function(grunt) {
         path: 'spec/tmp',
         id: 'sample.com',
         name: 'sample'
-      }
+      },
+      add: {
+        path: 'spec/tmp',
+        platform: ['android', 'ios']
+      },
     },
     nodeunit: {
       tests: ['spec/*_spec.js']
@@ -36,7 +40,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-  grunt.registerTask('test', ['clean', 'pg:init', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'pg:init', 'pg:add', 'nodeunit']);
   // Default task: lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
 };
