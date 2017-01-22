@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - "6.1.0"
+- 6.1.0
 before_script:
-  - npm install -g phonegap
-  - npm install -g grunt-cli
+- npm install -g phonegap
+- npm install -g grunt-cli
+notifications:
+  slack:
+    secure: HBiGm/ky1yVHieB011K9G4VmsmKGtiZz8rforJCbGUW0PLtFFCCD1olswmoQP+O1k0AdHrY4Eh+yG7K9e2ceFjUcjA05BwYTz3Q0607dA73RnaXUe3UThJGIq4gMsJOBPCC9QdI4/bmgo0KZry4aGHL+4uJ4NgbGJe2BwHPt7BYqgD08N456EESq4x8/1KRYQ+Cxtuk2sxBINYvKzaCzoUfNx1ZKr9TJUM5mLPYFk7DI69c/GmDKXjTXAImqwP4335djzbd8UJ0MWX0BzzAPIXNU8XteFziT05Nan5KezXdoCZKi2BtaG+IeraMjpFrp4D+QS0jmrz7Vs4KTbYG86EwVRhSsGT/8gC+xY0sHu3k+njg2XWvPXeSKsOfq36gbq2PpzCMfvLvb2vTDeMgd+P9+TCLBzaAb6fwP+ozpQ+xtl/J7Y1+7GMxW7SKk5en0NXEb5JxtloMOB7N2Nz2AOUuQSOGS8P0h+j3K/Hcucxztcq9yX5Dq9Qo4pW1u7drmOHjwM9WXcMpvpz4lYwbPjjriCWGrdyTbIrKq0tDOEzRusmn73dHFCf1pAkFM5XT+6fsixgT20998NAC7dQaSwS0j7lYUF5WwiTMNUwS19nS182SpNS5lXBPs+wpLzCszKItluEqYiqEhfE6DwqYTzY5b1+hOV/sMUK6yXVnWzn0=
